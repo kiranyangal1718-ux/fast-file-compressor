@@ -3,186 +3,205 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>UltraFast File Compressor | 100% Private Browser Compression</title>
-    <meta name="description" content="Compress files instantly with our secure, browser-based GZIP tool. No uploads required, 100% private, and lightning fast.">
-    
-    <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "SoftwareApplication",
-      "name": "UltraFast Compressor",
-      "operatingSystem": "Any",
-      "applicationCategory": "Utility",
-      "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
-      "featureList": "Private offline compression, GZIP support, No upload limit"
-    }
-    </script>
+    <title>Pro Compressor | Secure & Fast</title>
     <style>
-    :root {
-        --bg: #0f172a;
-        --card: #1e293b;
-        --accent: #38bdf8;
-        --text: #f1f5f9;
-        --text-dim: #94a3b8;
-    }
+        :root {
+            --bg: #0f172a;
+            --card: #1e293b;
+            --accent: #38bdf8;
+            --success: #22c55e;
+            --text: #f1f5f9;
+        }
 
-    body {
-        background-color: var(--bg);
-        color: var(--text);
-        font-family: 'Inter', system-ui, sans-serif;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        min-height: 100vh;
-        margin: 0;
-    }
+        body {
+            background-color: var(--bg);
+            color: var(--text);
+            font-family: 'Inter', system-ui, -apple-system, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+        }
 
-    .container {
-        background: var(--card);
-        padding: 2.5rem;
-        border-radius: 1.5rem;
-        box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.3);
-        text-align: center;
-        max-width: 400px;
-        width: 90%;
-        border: 1px solid rgba(255,255,255,0.1);
-    }
+        .container {
+            background: var(--card);
+            padding: 2.5rem;
+            border-radius: 1.5rem;
+            box-shadow: 0 25px 50px -12px rgba(0,0,0,0.5);
+            width: 100%;
+            max-width: 420px;
+            text-align: center;
+            border: 1px solid rgba(255,255,255,0.1);
+        }
 
-    h1 { font-size: 1.5rem; margin-bottom: 0.5rem; color: var(--accent); }
-    p { color: var(--text-dim); margin-bottom: 2rem; font-size: 0.9rem; }
+        .logo { font-size: 1.8rem; font-weight: 800; color: var(--accent); margin-bottom: 0.5rem; letter-spacing: -1px; }
+        p { color: #94a3b8; font-size: 0.95rem; margin-bottom: 2rem; }
 
-    input[type="file"] {
-        display: none;
-    }
+        /* File Input Styling */
+        #fileInput { display: none; }
 
-    .custom-upload {
-        background: rgba(56, 189, 248, 0.1);
-        border: 2px dashed var(--accent);
-        padding: 1.5rem;
-        border-radius: 1rem;
-        cursor: pointer;
-        display: block;
-        transition: 0.3s;
-        color: var(--accent);
-        font-weight: bold;
-    }
+        .upload-area {
+            border: 2px dashed #334155;
+            padding: 2.5rem;
+            border-radius: 1rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: block;
+            margin-bottom: 1.5rem;
+        }
 
-    .custom-upload:hover { background: rgba(56, 189, 248, 0.2); }
+        .upload-area:hover { border-color: var(--accent); background: rgba(56, 189, 248, 0.05); }
 
-    button {
-        background: var(--accent);
-        color: #000;
-        border: none;
-        padding: 1rem 2rem;
-        border-radius: 0.75rem;
-        font-weight: 700;
-        cursor: pointer;
-        width: 100%;
-        margin-top: 1.5rem;
-        transition: transform 0.2s, box-shadow 0.2s;
-    }
+        button {
+            width: 100%;
+            padding: 1rem;
+            border-radius: 0.75rem;
+            border: none;
+            font-weight: 700;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: 0.2s;
+            margin-bottom: 0.8rem;
+        }
 
-    button:hover {
-        transform: translateY(-2px);
-        box-shadow: 0 0 20px rgba(56, 189, 248, 0.4);
-    }
+        .btn-primary { background: var(--accent); color: #0f172a; }
+        .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 10px 15px -3px rgba(56, 189, 248, 0.3); }
 
-    #status {
-        margin-top: 1.5rem;
-        font-size: 0.85rem;
-        padding: 0.75rem;
-        border-radius: 0.5rem;
-        background: rgba(255,255,255,0.05);
-    }
-</style>
+        .btn-reset { background: transparent; color: #94a3b8; border: 1px solid #334155; }
+        .btn-reset:hover { background: #334155; color: white; }
 
-    <style>
-        :root { --primary: #2563eb; --bg: #f8fafc; }
-        body { font-family: 'Inter', system-ui, sans-serif; background: var(--bg); color: #1e293b; line-height: 1.6; margin: 0; padding: 20px; }
-        .container { max-width: 800px; margin: 0 auto; }
-        .tool-card { background: white; border-radius: 16px; padding: 40px; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1); text-align: center; border: 1px solid #e2e8f0; }
-        .drop-zone { border: 2px dashed #cbd5e1; border-radius: 12px; padding: 60px 20px; margin: 20px 0; cursor: pointer; transition: all 0.2s; }
-        .drop-zone:hover { border-color: var(--primary); background: #eff6ff; }
-        button { background: var(--primary); color: white; border: none; padding: 14px 28px; border-radius: 8px; font-weight: 600; cursor: pointer; font-size: 1rem; width: 100%; }
-        button:disabled { background: #94a3b8; cursor: not-allowed; }
-        .seo-content { margin-top: 60px; padding-top: 40px; border-top: 1px solid #e2e8f0; }
-        .stat-badge { display: inline-block; padding: 4px 12px; border-radius: 99px; background: #dcfce7; color: #166534; font-size: 0.8rem; font-weight: 700; margin-bottom: 10px; }
+        /* Comparison Dashboard */
+        .stats-box {
+            background: rgba(15, 23, 42, 0.4);
+            padding: 1.5rem;
+            border-radius: 1rem;
+            margin: 1.5rem 0;
+            text-align: left;
+            border: 1px solid rgba(255,255,255,0.05);
+        }
+
+        .stat-line { display: flex; justify-content: space-between; margin-bottom: 0.6rem; font-size: 0.9rem; }
+        .stat-val { font-family: monospace; color: var(--text); font-weight: bold; }
+        
+        .savings-badge { 
+            display: block; 
+            background: rgba(34, 197, 94, 0.2); 
+            color: var(--success); 
+            padding: 0.5rem; 
+            border-radius: 0.5rem; 
+            font-weight: 800; 
+            text-align: center; 
+            margin-top: 1rem;
+        }
+
+        .hidden { display: none; }
     </style>
 </head>
 <body>
 
 <div class="container">
-    <div class="tool-card">
-        <span class="stat-badge">✓ GDPR COMPLIANT & SECURE</span>
-        <h1>Fast Browser File Compressor</h1>
-        <p>Compress large text files, JSON, or logs in milliseconds. Your data never leaves your device.</p>
-        
-        <div id="drop-zone" role="button" aria-label="Upload File">
-            <strong id="file-name">Drag & drop or click to upload</strong>
-            <p style="font-size: 0.8rem; color: #64748b;">Supported: .txt, .json, .csv, .log (GZIP output)</p>
-        </div>
-        <input type="file" id="file-input" hidden>
-        
-        <button id="main-btn" disabled>Compress File</button>
-        <p id="status-msg" style="margin-top:15px; font-weight:500;"></p>
+    <div class="logo">⚡ ProCompress</div>
+    <p>Local, private, and instant.</p>
+
+    <div id="step-1">
+        <label for="fileInput" class="upload-area">
+            <div style="font-size: 2.5rem; margin-bottom: 10px;">🖼️</div>
+            <div id="file-name">Click to select File</div>
+            <span style="font-size: 0.7rem; color: #64748b;">JPG, PNG, or JSON</span>
+            <input type="file" id="fileInput" accept="image/jpeg,image/png,application/json">
+        </label>
+        <button class="btn-primary" onclick="handleProcess()">Compress File</button>
     </div>
 
-    <article class="seo-content">
-        <h2>How to Compress Files Without a Server?</h2>
-        <p>Our tool uses the modern <strong>Web Compression Streams API</strong>. Unlike other tools that upload your sensitive data to a server, we process every byte locally in your browser RAM.</p>
+    <div id="step-2" class="hidden">
+        <div class="stats-box">
+            <div class="stat-line"><span>Original Size:</span> <span id="old-size" class="stat-val">-</span></div>
+            <div class="stat-line"><span>New Size:</span> <span id="new-size" class="stat-val">-</span></div>
+            <div id="savings-percent" class="savings-badge">Saved 0%</div>
+        </div>
         
-        <h3>Frequently Asked Questions</h3>
-        <details>
-            <summary>Is this file compressor safe?</summary>
-            <p>Yes. Because we use client-side JavaScript, your file is never sent to the internet. It is 100% private.</p>
-        </details>
-        <details>
-            <summary>What is GZIP compression?</summary>
-            <p>GZIP is a lossless compression algorithm that reduces file size by identifying and replacing repetitive patterns in your data.</p>
-        </details>
-    </article>
+        <button class="btn-primary" id="download-btn">Download Compressed File</button>
+        <button class="btn-reset" onclick="location.reload()">Reset & Start Over</button>
+    </div>
+
+    <div id="loading" class="hidden" style="color: var(--accent); font-weight: bold; margin-top: 10px;">Processing...</div>
 </div>
 
 <script>
-    const dropZone = document.getElementById('drop-zone');
-    const fileInput = document.getElementById('file-input');
-    const btn = document.getElementById('main-btn');
-    const statusMsg = document.getElementById('status-msg');
-    let activeFile = null;
+    let finalBlob = null;
+    let fileName = "";
 
-    dropZone.onclick = () => fileInput.click();
-    fileInput.onchange = (e) => {
-        activeFile = e.target.files[0];
-        if (activeFile) {
-            document.getElementById('file-name').innerText = `Selected: ${activeFile.name}`;
-            btn.disabled = false;
+    // Update label when file is picked
+    document.getElementById('fileInput').onchange = function(e) {
+        if(e.target.files[0]) {
+            document.getElementById('file-name').innerText = e.target.files[0].name;
+            document.getElementById('file-name').style.color = "#38bdf8";
         }
     };
 
-    btn.onclick = async () => {
-        try {
-            statusMsg.innerText = "⚡ Processing locally...";
-            const start = performance.now();
-            
-            const readableStream = activeFile.stream();
-            const compressedStream = readableStream.pipeThrough(new CompressionStream('gzip'));
-            
-            const blob = await new Response(compressedStream).blob();
-            const end = performance.now();
-            
-            const url = URL.createObjectURL(blob);
+    async function handleProcess() {
+        const input = document.getElementById('fileInput');
+        const file = input.files[0];
+
+        if (!file) return alert("Please select a file first!");
+
+        fileName = file.name;
+        document.getElementById('loading').classList.remove('hidden');
+
+        if (file.type.startsWith('image/')) {
+            const reader = new FileReader();
+            reader.readAsDataURL(file);
+            reader.onload = (e) => {
+                const img = new Image();
+                img.src = e.target.result;
+                img.onload = () => {
+                    const canvas = document.createElement('canvas');
+                    canvas.width = img.width;
+                    canvas.height = img.height;
+                    const ctx = canvas.getContext('2d');
+                    ctx.drawImage(img, 0, 0);
+
+                    // Compress to 0.7 quality while keeping original format
+                    canvas.toBlob((blob) => {
+                        displayResults(file.size, blob);
+                    }, file.type, 0.7);
+                };
+            };
+        } else if (file.type === "application/json") {
+            const text = await file.text();
+            try {
+                const minified = JSON.stringify(JSON.parse(text));
+                const blob = new Blob([minified], { type: "application/json" });
+                displayResults(file.size, blob);
+            } catch(e) {
+                alert("Invalid JSON file!");
+                location.reload();
+            }
+        }
+    }
+
+    function displayResults(oldSize, newBlob) {
+        finalBlob = newBlob;
+        document.getElementById('loading').classList.add('hidden');
+        document.getElementById('step-1').classList.add('hidden');
+        document.getElementById('step-2').classList.remove('hidden');
+
+        document.getElementById('old-size').innerText = (oldSize / 1024).toFixed(2) + " KB";
+        document.getElementById('new-size').innerText = (newBlob.size / 1024).toFixed(2) + " KB";
+        
+        const diff = Math.round(((oldSize - newBlob.size) / oldSize) * 100);
+        document.getElementById('savings-percent').innerText = `🔥 Reduced by ${diff}%`;
+
+        document.getElementById('download-btn').onclick = () => {
+            const url = URL.createObjectURL(finalBlob);
             const a = document.createElement('a');
             a.href = url;
-            a.download = `${activeFile.name}.gz`;
+            a.download = "compressed_" + fileName;
             a.click();
-
-            const saved = ((activeFile.size - blob.size) / 1024).toFixed(1);
-            const time = ((end - start) / 1000).toFixed(2);
-            statusMsg.innerHTML = `<span style="color:#166534">Success! Saved ${saved} KB in ${time}s</span>`;
-        } catch (err) {
-            statusMsg.innerText = "Error: Your browser may not support this API.";
-        }
-    };
+        };
+    }
 </script>
+
 </body>
 </html>
