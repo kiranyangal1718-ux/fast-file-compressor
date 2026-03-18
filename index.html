@@ -17,6 +17,84 @@
       "featureList": "Private offline compression, GZIP support, No upload limit"
     }
     </script>
+    <style>
+    :root {
+        --bg: #0f172a;
+        --card: #1e293b;
+        --accent: #38bdf8;
+        --text: #f1f5f9;
+        --text-dim: #94a3b8;
+    }
+
+    body {
+        background-color: var(--bg);
+        color: var(--text);
+        font-family: 'Inter', system-ui, sans-serif;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-height: 100vh;
+        margin: 0;
+    }
+
+    .container {
+        background: var(--card);
+        padding: 2.5rem;
+        border-radius: 1.5rem;
+        box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.3);
+        text-align: center;
+        max-width: 400px;
+        width: 90%;
+        border: 1px solid rgba(255,255,255,0.1);
+    }
+
+    h1 { font-size: 1.5rem; margin-bottom: 0.5rem; color: var(--accent); }
+    p { color: var(--text-dim); margin-bottom: 2rem; font-size: 0.9rem; }
+
+    input[type="file"] {
+        display: none;
+    }
+
+    .custom-upload {
+        background: rgba(56, 189, 248, 0.1);
+        border: 2px dashed var(--accent);
+        padding: 1.5rem;
+        border-radius: 1rem;
+        cursor: pointer;
+        display: block;
+        transition: 0.3s;
+        color: var(--accent);
+        font-weight: bold;
+    }
+
+    .custom-upload:hover { background: rgba(56, 189, 248, 0.2); }
+
+    button {
+        background: var(--accent);
+        color: #000;
+        border: none;
+        padding: 1rem 2rem;
+        border-radius: 0.75rem;
+        font-weight: 700;
+        cursor: pointer;
+        width: 100%;
+        margin-top: 1.5rem;
+        transition: transform 0.2s, box-shadow 0.2s;
+    }
+
+    button:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 0 20px rgba(56, 189, 248, 0.4);
+    }
+
+    #status {
+        margin-top: 1.5rem;
+        font-size: 0.85rem;
+        padding: 0.75rem;
+        border-radius: 0.5rem;
+        background: rgba(255,255,255,0.05);
+    }
+</style>
 
     <style>
         :root { --primary: #2563eb; --bg: #f8fafc; }
